@@ -87,7 +87,28 @@ export const SKILLS_DATA = [
 export const EXPERIENCE_DATA = [
   {
     id: 1,
-    period: "2024 - 2025",
+    period: "Oct 2026 - Present",
+    organization: "CODEALPHA | Full Stack Development",
+    role: "Intern",
+    highlights: [
+      "Designing and developing responsive web applications using full-stack technologies include Node.js, Next.js, HTML, JavaScript, and CSS",
+      "Executing allocated technical tasks and project deliverables within the internship period",
+    ],
+  },
+ {
+    id: 2,
+    period: "Jan 2024 - Aug 2026",
+    organization: "INTERNATIONAL ISLAMIC UNIVERSITY CHITTAGONG",
+    role: "Teaching Assistant (TA)",
+    highlights: [
+      "Appointed as TA for courses: Object Oriented Programming (C++), Basic Electrical Engineering,Electronics & Neural Network.",
+      "Assisted students to solve code and conceptual problem. Conducted tutorial sessions to clarify complex concepts for students. And evaluated academic assignments and Lab Reports, providing constructive feedback",
+    ],
+  },
+  
+  {
+    id: 3,
+    period: "Aug 2025 - Aug 2026",
     organization: "IEEE RAS IIUC SBC",
     role: "Programme Coordinator",
     highlights: [
@@ -95,27 +116,20 @@ export const EXPERIENCE_DATA = [
       "Supported robotics community and student engagement",
     ],
   },
+  
   {
-    id: 2,
-    period: "2023 - 2024",
-    organization: "IEEE ComSoc IIUC SBC",
-    role: "Executive Committee",
+    id: 4,
+    period: "July 2025 - Present",
+    organization: "Solve with Tanvir | Youtube" ,
+    role: "Owner & Content Creator",
+ 
+    youtubeUrl: "https://www.youtube.com/@SolvewithTanvir",
     highlights: [
-      "Contributed to technical and community initiatives",
-      "Worked on events and collaborations",
+    "Producing comprehensive tutorial and  academic video content",
+      //"Worked with clients on small to medium projects",
     ],
   },
-  {
-    id: 3,
-    period: "2022 - 2024",
-    organization: "Freelance Projects",
-    role: "Full Stack Developer",
-    highlights: [
-      "Built web applications using MERN/Next.js",
-      "Worked with clients on small to medium projects",
-    ],
-  },
-  {
+  /*{
     id: 4,
     period: "2021 - 2025",
     organization: "B.Sc in Computer Science & Engineering",
@@ -124,7 +138,7 @@ export const EXPERIENCE_DATA = [
       "Completed degree with strong foundation in CSE",
       "Worked on academic and research projects",
     ],
-  },
+  },*/
 ];
 
 export const PROJECTS_DATA = [

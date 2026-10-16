@@ -5,6 +5,27 @@ import { EXPERIENCE_DATA } from "@/data/portfolioData";
 import { Briefcase } from "lucide-react";
 
 /**
+ * Custom Inline SVG Icon for YouTube
+ * (Compatible with lucide-react v1+ without needing external brand icon packages)
+ */
+function YoutubeIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3v6Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+/**
  * 3. EXPERIENCE PAGE ("/experience")
  * Matches Showcase Panel 3: Neon vertical timeline on the left and
  * workspace card with handwritten quote on the right.
@@ -41,10 +62,26 @@ export default function ExperiencePage() {
                 <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-emerald-600 dark:text-neon-primary">
                   {item.period}
                 </span>
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-1">
-                  {item.organization}
+
+                {/* Organization Title + Optional Clickable YouTube Icon */}
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-1 flex items-center flex-wrap gap-2">
+                  <span>{item.organization}</span>
+
+                  {item.youtubeUrl && (
+                    <a
+                      href={item.youtubeUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Visit YouTube Channel"
+                      title="Visit Solve with Tanvir on YouTube"
+                      className="inline-flex items-center justify-center p-1.5 rounded-lg bg-red-500/10 border border-red-500/40 text-red-500 hover:bg-red-500 hover:text-white hover:shadow-[0_0_12px_rgba(239,68,68,0.6)] transition-all duration-300 hover:scale-110"
+                    >
+                      <YoutubeIcon className="w-4 h-4" />
+                    </a>
+                  )}
                 </h2>
-                <h3 className="text-sm font-medium text-emerald-700 dark:text-neon-primary/90 mb-3">
+
+                <h3 className="text- font-medium text-emerald-700 dark:text-neon-primary/90 mb-3">
                   {item.role}
                 </h3>
 
