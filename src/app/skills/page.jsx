@@ -119,7 +119,7 @@ export default function SkillsPage() {
                   Coding Setup Illustration
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
-                  Optional image path:{" "}
+                  Optional image path:{""}
                   <code className="text-neon-primary">/public/images/skills-side.jpg</code>
                 </p>
               </div>

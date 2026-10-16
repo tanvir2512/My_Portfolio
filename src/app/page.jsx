@@ -65,7 +65,7 @@ export default function AboutPage() {
           {/* 3 Quick Highlight Badges (Location, Education, Status) */}
           <div className="pt-6 border-t border-emerald-500/20 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl">
             {/* Location */}
-            <div className="flex items-center gap-3">
+           {/* <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-lg bg-emerald-500/10 dark:bg-neon-primary/10 border border-emerald-500/30 dark:border-neon-primary/30 text-emerald-600 dark:text-neon-primary">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                   Bangladesh
                 </p>
               </div>
-            </div>
+            </div> */} 
 
             {/* Education */}
             <div className="flex items-center gap-3">

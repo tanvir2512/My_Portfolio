@@ -15,8 +15,8 @@ export const NAVIGATION_LINKS = [
 
 export const PERSONAL_INFO = {
   name: "Tanvirul Islam",
-  title: "Computer Science & Engineering Graduate",
-  bio: "I'm a passionate and detail-oriented CSE graduate with a strong foundation in programming, problem solving, and building real-world solutions. I enjoy turning ideas into impactful digital products and love to learn new technologies.",
+  title: "Web Developer | Flutter Developer",
+  bio: "I'm a motivated Computer Engineer with a strong foundation in Programming. And Passionate about software engineering, problem solving, and building real-world solutions through Web & Mobile applications. I enjoy turning ideas into impactful digital products and continuously learning new technologies.",
   location: "Chattogram, Bangladesh",
   educationBadge: "CSE Graduate",
   institutionShort: "IIUC",
@@ -46,38 +46,42 @@ export const SKILLS_DATA = [
   { id: 3, name: "JavaScript", category: "Languages", badge: "JS", color: "#EAB308" },
   { id: 4, name: "SQL", category: "Languages", badge: "SQL", color: "#38BDF8" },
   { id: 5, name: "TypeScript", category: "Languages", badge: "TS", color: "#2563EB" },
-  { id: 6, name: "Java", category: "Languages", badge: "JV", color: "#F97316" },
-  { id: 7, name: "Dart", category: "Languages", badge: "DT", color: "#06B6D4" },
-  { id: 8, name: "HTML & CSS", category: "Languages", badge: "H5", color: "#EF4444" },
+  //{ id: 6, name: "Java", category: "Languages", badge: "JV", color: "#F97316" },
+  { id: 6, name: "Dart", category: "Languages", badge: "DT", color: "#06B6D4" },
+  { id: 7, name: "HTML & CSS", category: "Languages", badge: "H5", color: "#EF4444" },
 
   // Frameworks & Libraries (Matching Showcase Image + Flutter/Tailwind)
-  { id: 9, name: "React", category: "Frameworks", badge: "RC", color: "#22D3EE" },
-  { id: 10, name: "Next.js", category: "Frameworks", badge: "NX", color: "#FFFFFF" },
-  { id: 11, name: "Node.js", category: "Frameworks", badge: "ND", color: "#22C55E" },
-  { id: 12, name: "Express.js", category: "Frameworks", badge: "EX", color: "#9CA3AF" },
-  { id: 13, name: "Flutter", category: "Frameworks", badge: "FL", color: "#38BDF8" },
-  { id: 14, name: "Tailwind CSS", category: "Frameworks", badge: "TW", color: "#06B6D4" },
-  { id: 15, name: "PyTorch / OpenCV", category: "Frameworks", badge: "CV", color: "#F97316" },
+  { id: 8, name: "React", category: "Frameworks", badge: "RC", color: "#22D3EE" },
+  { id: 9, name: "Next.js", category: "Frameworks", badge: "NX", color: "#FFFFFF" },
+  { id: 10, name: "Node.js", category: "Frameworks", badge: "ND", color: "#22C55E" },
+  ///{ id: 12, name: "Express.js", category: "Frameworks", badge: "EX", color: "#9CA3AF" },
+  { id: 11, name: "Flutter", category: "Frameworks", badge: "FL", color: "#38BDF8" },
+  { id: 12, name: "Tailwind CSS", category: "Frameworks", badge: "TW", color: "#06B6D4" },
+  { id: 13, name: "NumPy / Pandas", category: "Frameworks", badge: "NP", color: "#F97316" },
 
   // Tools (Pre-populated)
-  { id: 16, name: "Git & GitHub", category: "Tools", badge: "GIT", color: "#F97316" },
-  { id: 17, name: "VS Code", category: "Tools", badge: "VS", color: "#3B82F6" },
-  { id: 18, name: "Vercel", category: "Tools", badge: "VC", color: "#E5E7EB" },
-  { id: 19, name: "Docker", category: "Tools", badge: "DK", color: "#0EA5E9" },
-  { id: 20, name: "Postman", category: "Tools", badge: "PM", color: "#FB923C" },
-  { id: 21, name: "Cisco Packet Tracer", category: "Tools", badge: "NW", color: "#10B981" },
+  { id: 14, name: "Git & GitHub", category: "Tools", badge: "GIT", color: "#F97316" },
+  { id: 15, name: "VS Code", category: "Tools", badge: "VS", color: "#3B82F6" },
+  { id: 16, name: "Vercel", category: "Tools", badge: "VC", color: "#E5E7EB" },
+  { id: 17, name: "Postman", category: "Tools", badge: "PM", color: "#FB923C" },
+  { id: 18, name: "Microsoft Office", category: "Tools", badge: "MS", color: "#0EA5E9" },
+  { id: 19, name: "Cisco Packet Tracer", category: "Tools", badge: "NW", color: "#10B981" },
+  { id: 20, name: "Adobe Photoshop", category: "Tools", badge: "Ps", color: "#3B82F6" },
+  { id: 21, name: "Adobe Illustrator", category: "Tools", badge: "Ai", color: "#FB923C" },
 
   // Databases (Pre-populated)
-  { id: 22, name: "MongoDB", category: "Databases", badge: "MG", color: "#22C55E" },
-  { id: 23, name: "MySQL", category: "Databases", badge: "MY", color: "#38BDF8" },
-  { id: 24, name: "PostgreSQL", category: "Databases", badge: "PG", color: "#60A5FA" },
-  { id: 25, name: "Firebase", category: "Databases", badge: "FB", color: "#FBBF24" },
+  //{ id: 22, name: "MongoDB", category: "Databases", badge: "MG", color: "#22C55E" },
+  { id: 22, name: "MySQL", category: "Databases", badge: "MY", color: "#38BDF8" },
+  { id: 23, name: "PostgreSQL", category: "Databases", badge: "PG", color: "#60A5FA" },
+  //{ id: 25, name: "Firebase", category: "Databases", badge: "FB", color: "#FBBF24" },
 
   // Others (Pre-populated)
-  { id: 26, name: "Computer Vision & ML", category: "Others", badge: "AI", color: "#39FF14" },
-  { id: 27, name: "ROS / MAVLink Drones", category: "Others", badge: "ROS", color: "#A855F7" },
-  { id: 28, name: "IoT & Embedded Systems", category: "Others", badge: "IOT", color: "#14B8A6" },
-  { id: 29, name: "RESTful APIs", category: "Others", badge: "API", color: "#39FF14" },
+  { id: 24, name: "Computer Vision & ML", category: "Others", badge: "AI", color: "#39FF14" },
+  { id: 25, name: "ROS / MAVLink Drones", category: "Others", badge: "ROS", color: "#A855F7" },
+  { id: 26, name: "IoT & Embedded Systems", category: "Others", badge: "IOT", color: "#14B8A6" },
+  { id: 27, name: "REST APIs", category: "Others", badge: "API", color: "#39FF14" },
+  { id: 28, name: "Claude Code", category: "Others", badge: "Cc", color: "#FB923C" },
+
 ];
 
 export const EXPERIENCE_DATA = [
