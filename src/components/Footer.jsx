@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { Mail, Globe } from "lucide-react";
@@ -44,6 +46,7 @@ function LinkedinIcon({ className = "w-4 h-4" }) {
 /**
  * Footer Component
  * Displays social media links, handwritten signature accent, and copyright notice.
+ * Uses a static year (2026) to avoid Next.js 16 static prerender build errors on Vercel.
  */
 export default function Footer() {
   return (
@@ -100,7 +103,7 @@ export default function Footer() {
 
         {/* Right: Copyright */}
         <p className="text-xs text-slate-500 dark:text-gray-400">
-          © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
+          © 2026 {PERSONAL_INFO.name}. All rights reserved.
         </p>
       </div>
     </footer>
