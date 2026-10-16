@@ -21,12 +21,12 @@ export const PERSONAL_INFO = {
   educationBadge: "CSE Graduate",
   institutionShort: "IIUC",
   status: "Open to Opportunities",
-  email: "tanvirul.islam@gmail.com",
-  phone: "+880 1700 XXX XXX",
-  linkedin: "https://linkedin.com/in/tanvirul-islam",
-  linkedinHandle: "/tanvirul-islam",
-  github: "https://github.com/tanvirul-islam",
-  githubHandle: "/tanvirul-islam",
+  email: "tanvirchowdhury565@gmail.com",
+  phone: "+880 1798277658",
+  linkedin: "https://www.linkedin.com/in/tanvirul-islam-b51772374",
+  linkedinHandle: "in/tanvirul-islam-b51772374",
+  github: "https://github.com/tanvir2512",
+  githubHandle: "/tanvir2512",
   cvUrl: "/cv/Tanvirul_Islam_CV.pdf",
 };
 
