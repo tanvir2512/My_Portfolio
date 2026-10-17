@@ -17,10 +17,10 @@ export default function PullCordSwitch() {
   // 1. INCREASE OR DECREASE CORD LENGTH HERE:
   // Changed from 60 -> 95 (Change to 110 or 120 if you want it even longer!)
   // =========================================================================
-  const BASE_LENGTH = 140;
+  const BASE_LENGTH = 150;
 
   // Pull distance threshold required to trigger theme toggle when dragging
-  const TRIGGER_THRESHOLD = 40;
+  const TRIGGER_THRESHOLD = 30;
 
   // Dynamic displacement (x = horizontal sway, y = vertical stretch)
   const [offset, setOffset] = useState({ x: 3, y: 0 });
@@ -155,7 +155,7 @@ export default function PullCordSwitch() {
 
   return (
     <div
-      className="fixed top-0 right-1 sm:right-4 z-50 flex flex-col items-center select-none touch-none"
+      className="fixed top-0 right-3 sm:right-5 z-40 flex flex-col items-center select-none touch-none "
       title="Pull/click to switch theme"
     >
       {/* Top Ceiling Mount Cap */}
