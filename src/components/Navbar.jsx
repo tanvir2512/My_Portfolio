@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-[#0B0D0C]/85 border-b border-emerald-500/20 dark:border-neon-primary/20 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 pr-14 sm:pr-20 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pr-10 sm:pr-12 h-20 flex items-center justify-between">
         {/* Brand Logo + Name (Bitcount/Pixel font for Name) */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-9 h-9 rounded-lg bg-neon-secondary/15 dark:bg-neon-primary/15 border border-neon-secondary dark:border-neon-primary flex items-center justify-center shadow-neon group-hover:scale-105 transition-transform">
