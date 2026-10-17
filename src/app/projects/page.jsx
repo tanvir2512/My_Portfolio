@@ -41,7 +41,7 @@ export default function ProjectsPage() {
           >
             <div>
               {/* Project Image / Styled Placeholder */}
-              <div className="relative h-44 w-full overflow-hidden bg-[#111916] border-b border-emerald-500/20 dark:border-neon-primary/20">
+              <div className="relative h-64 w-full overflow-hidden bg-[#111916] border-b border-emerald-500/20 dark:border-neon-primary/20">
                 {!imgErrors[project.id] ? (
                   <img
                     src={project.image}
@@ -77,14 +77,19 @@ export default function ProjectsPage() {
             </div>
 
             {/* Card Footer Button */}
-            <div className="px-5 pb-5 pt-2">
+            <div className="px-5 pb-3 pt-">
+            
               <a
-                href={project.link}
-                className="neon-outline-btn text-xs uppercase tracking-wider w-fit"
-              >
-                <span>View Project</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+  href={project.link || "#"}
+  target={project.link && project.link !== "#" ? "_blank" : "_self"}
+  rel="noreferrer"
+  className="neon-outline-btn text-xs uppercase tracking-wider w-fit"
+>
+  <span>
+    {project.link && project.link !== "#" ? "View Live Project" : "View Project"}
+  </span>
+  <ArrowRight className="w-3.5 h-3.5" />
+</a>
             </div>
           </div>
         ))}
