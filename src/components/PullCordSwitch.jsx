@@ -5,73 +5,79 @@ import { useTheme } from "@/context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
 
 /**
- * PullCordSwitch Component (Elastic Spring Physics Version)
- * - Supports both CLICKING and DRAGGING/PULLING down with mouse or touch.
- * - Uses Hooke's Law spring physics (stiffness + damping) so the cord stretches
- *   softly like an elastic material and bounces naturally when released.
+ * PullCordSwitch Component (Elastic Spring + Gentle Wind Swing Version)
+ * - Fixed disappearing line bug (added gradientUnits="userSpaceOnUse" + glow).
+ * - Increased cord length (BASE_LENGTH = 95, adjustable right below).
+ * - Continuous gentle wind sway animation so the cord softly swings like a real hanging string.
  */
 export default function PullCordSwitch() {
   const { theme, toggleTheme, mounted } = useTheme();
 
-  // Base resting length of the cord in pixels
-  const BASE_LENGTH = 60;
+  // =========================================================================
+  // 1. INCREASE OR DECREASE CORD LENGTH HERE:
+  // Changed from 60 -> 95 (Change to 110 or 120 if you want it even longer!)
+  // =========================================================================
+  const BASE_LENGTH = 95;
+
   // Pull distance threshold required to trigger theme toggle when dragging
-  const TRIGGER_THRESHOLD = 38;
+  const TRIGGER_THRESHOLD = 40;
 
   // Dynamic displacement (x = horizontal sway, y = vertical stretch)
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [offset, setOffset] = useState({ x: 3, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
 
   // Physics state refs for smooth 60fps animation
-  const posRef = useRef({ x: 0, y: 0 });
+  const posRef = useRef({ x: 3, y: 0 });
   const velRef = useRef({ x: 0, y: 0 });
+  const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
-  const animFrameRef = useRef(null);
   const didDragMoveRef = useRef(false);
 
-  // Start the elastic spring-back physics animation upon release
-  const startSpringAnimation = () => {
-    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+  // =========================================================================
+  // 2. CONTINUOUS ELASTIC + GENTLE BREEZE SWING LOOP
+  // Runs continuously so the cord gently sways in the wind when idle,
+  // and snaps back elastically after being pulled!
+  // =========================================================================
+  useEffect(() => {
+    let animId;
+    let time = 0;
 
     // Soft elastic spring constants
-    const stiffness = 0.14; // Lower = softer, stretchier elastic feel
-    const damping = 0.78;   // Controls how many soft bounces occur
+    const stiffness = 0.12; // Lower = softer, stretchier elastic feel
+    const damping = 0.82;   // Controls bounce smoothness
 
-    const step = () => {
-      // Hooke's Law: Acceleration towards resting position (0, 0)
-      const forceX = -stiffness * posRef.current.x;
-      const forceY = -stiffness * posRef.current.y;
+    const updatePhysics = () => {
+      time += 0.035;
 
-      velRef.current.x = (velRef.current.x + forceX) * damping;
-      velRef.current.y = (velRef.current.y + forceY) * damping;
+      if (!isDraggingRef.current) {
+        // Gentle wind target sway (swings ~6px left and right + tiny secondary breeze ripple)
+        const windTargetX = Math.sin(time) * 6 + Math.sin(time * 2.3) * 2;
+        const windTargetY = Math.abs(Math.cos(time)) * 1.5;
 
-      posRef.current.x += velRef.current.x;
-      posRef.current.y += velRef.current.y;
+        // Hooke's Law spring force pulling towards the gentle wind target
+        const forceX = -stiffness * (posRef.current.x - windTargetX);
+        const forceY = -stiffness * (posRef.current.y - windTargetY);
 
-      setOffset({ x: posRef.current.x, y: posRef.current.y });
+        velRef.current.x = (velRef.current.x + forceX) * damping;
+        velRef.current.y = (velRef.current.y + forceY) * damping;
 
-      // Continue animating until oscillation settles
-      if (
-        Math.abs(posRef.current.x) > 0.2 ||
-        Math.abs(posRef.current.y) > 0.2 ||
-        Math.abs(velRef.current.x) > 0.2 ||
-        Math.abs(velRef.current.y) > 0.2
-      ) {
-        animFrameRef.current = requestAnimationFrame(step);
-      } else {
-        posRef.current = { x: 0, y: 0 };
-        velRef.current = { x: 0, y: 0 };
-        setOffset({ x: 0, y: 0 });
+        posRef.current.x += velRef.current.x;
+        posRef.current.y += velRef.current.y;
+
+        setOffset({ x: posRef.current.x, y: posRef.current.y });
       }
+
+      animId = requestAnimationFrame(updatePhysics);
     };
 
-    animFrameRef.current = requestAnimationFrame(step);
-  };
+    animId = requestAnimationFrame(updatePhysics);
+    return () => cancelAnimationFrame(animId);
+  }, []);
 
   // Pointer Down (Mouse or Touch Start)
   const handlePointerDown = (e) => {
-    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     setIsDragging(true);
+    isDraggingRef.current = true;
     didDragMoveRef.current = false;
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -98,9 +104,9 @@ export default function PullCordSwitch() {
         didDragMoveRef.current = true;
       }
 
-      // Apply soft rubber resistance (diminishing stretch as you pull further)
-      const elasticX = Math.max(-35, Math.min(35, rawX * 0.45));
-      const elasticY = Math.max(-15, Math.min(110, rawY * 0.65));
+      // Soft rubber resistance while pulling
+      const elasticX = Math.max(-45, Math.min(45, rawX * 0.5));
+      const elasticY = Math.max(-20, Math.min(130, rawY * 0.7));
 
       posRef.current = { x: elasticX, y: elasticY };
       setOffset({ x: elasticX, y: elasticY });
@@ -108,20 +114,19 @@ export default function PullCordSwitch() {
 
     const handlePointerUp = () => {
       setIsDragging(false);
+      isDraggingRef.current = false;
 
-      // If user pulled past the threshold, OR simply clicked without dragging:
+      // If pulled past threshold OR clicked/tapped
       if (posRef.current.y >= TRIGGER_THRESHOLD) {
         toggleTheme();
-        // Give a little downward impulse for extra bounce
-        velRef.current.y = 6;
+        velRef.current.y = 7;
+        velRef.current.x = (Math.random() > 0.5 ? 1 : -1) * 5;
       } else if (!didDragMoveRef.current) {
-        // User tapped/clicked the bulb: simulate a soft elastic pull & release!
+        // User tapped/clicked the bulb: simulate an elastic downward pull & swing!
         toggleTheme();
-        posRef.current = { x: 0, y: 55 };
-        velRef.current = { x: 3, y: 8 };
+        posRef.current = { x: 8, y: 60 };
+        velRef.current = { x: -6, y: 9 };
       }
-
-      startSpringAnimation();
     };
 
     window.addEventListener("mousemove", handlePointerMove);
@@ -135,16 +140,17 @@ export default function PullCordSwitch() {
       window.removeEventListener("touchmove", handlePointerMove);
       window.removeEventListener("touchend", handlePointerUp);
     };
-  }, [isDragging, theme]);
+  }, [isDragging, theme, toggleTheme]);
 
   if (!mounted) return null;
 
-  // Calculate SVG Quadratic Bezier curve points so the cord bends like soft elastic
-  const svgWidth = 80;
+  // Calculate SVG Quadratic Bezier curve points so the rope bends naturally in the breeze
+  const svgWidth = 100;
   const centerX = svgWidth / 2;
   const endX = centerX + offset.x;
-  const endY = Math.max(20, BASE_LENGTH + offset.y);
-  const controlX = centerX + offset.x * 0.35;
+  const endY = Math.max(25, BASE_LENGTH + offset.y);
+  // Control point bellies out slightly more to look like a soft hanging rope
+  const controlX = centerX + offset.x * 0.6;
   const controlY = endY * 0.55;
 
   return (
@@ -156,25 +162,43 @@ export default function PullCordSwitch() {
       <div className="w-4 h-1.5 rounded-b-full bg-neon-secondary dark:bg-neon-primary shadow-neon" />
 
       {/* Elastic SVG Cord + Draggable Pendant */}
-      <div className="relative" style={{ width: svgWidth, height: endY + 44 }}>
+      <div className="relative" style={{ width: svgWidth, height: endY + 48 }}>
         <svg
           width={svgWidth}
-          height={endY + 20}
+          height={endY + 25}
           className="overflow-visible pointer-events-none"
         >
           <defs>
-            <linearGradient id="cordGrad" x1="0" y1="0" x2="0" y2="1">
+            {/* gradientUnits="userSpaceOnUse" prevents the SVG line from EVER disappearing when vertical! */}
+            <linearGradient
+              id="cordGrad"
+              gradientUnits="userSpaceOnUse"
+              x1={centerX}
+              y1="0"
+              x2={endX}
+              y2={endY}
+            >
               <stop offset="0%" stopColor="#00C853" />
               <stop offset="100%" stopColor="#39FF14" />
             </linearGradient>
           </defs>
 
-          {/* Curved Elastic String */}
+          {/* Outer Subtle Neon Glow Line (keeps string clearly visible on both Dark & Light backgrounds) */}
+          <path
+            d={`M ${centerX} 0 Q ${controlX} ${controlY} ${endX} ${endY}`}
+            fill="none"
+            stroke="#39FF14"
+            strokeOpacity="0.35"
+            strokeWidth="6"
+            strokeLinecap="round"
+          />
+
+          {/* Main Curved Elastic Rope */}
           <path
             d={`M ${centerX} 0 Q ${controlX} ${controlY} ${endX} ${endY}`}
             fill="none"
             stroke="url(#cordGrad)"
-            strokeWidth={Math.max(1.5, 2.5 - offset.y * 0.008)} // Thins slightly when stretched!
+            strokeWidth={Math.max(2, 3 - offset.y * 0.008)}
             strokeLinecap="round"
           />
         </svg>
@@ -188,7 +212,7 @@ export default function PullCordSwitch() {
           style={{
             left: `${endX}px`,
             top: `${endY}px`,
-            transform: `translate(-50%, -4px) rotate(${-offset.x * 0.8}deg)`,
+            transform: `translate(-50%, -4px) rotate(${-offset.x * 1.1}deg)`,
           }}
           className={`group absolute flex items-center justify-center w-9 h-9 rounded-full border-2 cursor-grab active:cursor-grabbing transition-colors duration-300 focus:outline-none ${
             theme === "dark"

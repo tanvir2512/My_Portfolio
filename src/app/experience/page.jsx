@@ -105,7 +105,7 @@ export default function ExperiencePage() {
           <div className="neon-card p-4 overflow-hidden">
             {!sideImgError ? (
               <img
-                src="/images/experience-side.jpg"
+                src="/images/experience-side.jpeg"
                 alt="Experience Workspace"
                 onError={() => setSideImgError(true)}
                 className="w-full h-72 object-cover rounded-lg"
@@ -119,7 +119,7 @@ export default function ExperiencePage() {
                 <p className="text-xs text-gray-400 mt-1">
                   Optional image path:{" "}
                   <code className="text-neon-primary">
-                    /public/images/experience-side.jpg
+                    /public/images/experience-side.jpeg
                   </code>
                 </p>
               </div>
