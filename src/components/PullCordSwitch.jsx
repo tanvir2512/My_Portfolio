@@ -17,7 +17,7 @@ export default function PullCordSwitch() {
   // 1. INCREASE OR DECREASE CORD LENGTH HERE:
   // Changed from 60 -> 95 (Change to 110 or 120 if you want it even longer!)
   // =========================================================================
-  const BASE_LENGTH = 95;
+  const BASE_LENGTH = 140;
 
   // Pull distance threshold required to trigger theme toggle when dragging
   const TRIGGER_THRESHOLD = 40;
@@ -43,8 +43,8 @@ export default function PullCordSwitch() {
     let time = 0;
 
     // Soft elastic spring constants
-    const stiffness = 0.12; // Lower = softer, stretchier elastic feel
-    const damping = 0.82;   // Controls bounce smoothness
+    const stiffness = 0.05; // Lower = softer, stretchier elastic feel
+    const damping = 0.50;   // Controls bounce smoothness
 
     const updatePhysics = () => {
       time += 0.035;
@@ -156,7 +156,7 @@ export default function PullCordSwitch() {
   return (
     <div
       className="fixed top-0 right-1 sm:right-4 z-50 flex flex-col items-center select-none touch-none"
-      title="Pull or click elastic cord to switch theme"
+      title="Pull/click to switch theme"
     >
       {/* Top Ceiling Mount Cap */}
       <div className="w-4 h-1.5 rounded-b-full bg-neon-secondary dark:bg-neon-primary shadow-neon" />
@@ -178,8 +178,8 @@ export default function PullCordSwitch() {
               x2={endX}
               y2={endY}
             >
-              <stop offset="0%" stopColor="#00C853" />
-              <stop offset="100%" stopColor="#39FF14" />
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#757575" />
             </linearGradient>
           </defs>
 
@@ -187,8 +187,8 @@ export default function PullCordSwitch() {
           <path
             d={`M ${centerX} 0 Q ${controlX} ${controlY} ${endX} ${endY}`}
             fill="none"
-            stroke="#39FF14"
-            strokeOpacity="0.35"
+            stroke="#4a4a4a"
+            strokeOpacity="0.30"
             strokeWidth="6"
             strokeLinecap="round"
           />

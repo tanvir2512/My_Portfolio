@@ -52,7 +52,7 @@ export const SKILLS_DATA = [
 
   // Frameworks & Libraries (Matching Showcase Image + Flutter/Tailwind)
   { id: 8, name: "React", category: "Frameworks", badge: "RC", color: "#22D3EE" },
-  { id: 9, name: "Next.js", category: "Frameworks", badge: "NX", color: "#FFFFFF" },
+  { id: 9, name: "Next.js", category: "Frameworks", badge: "NX", color: "#a39595" },
   { id: 10, name: "Node.js", category: "Frameworks", badge: "ND", color: "#22C55E" },
   ///{ id: 12, name: "Express.js", category: "Frameworks", badge: "EX", color: "#9CA3AF" },
   { id: 11, name: "Flutter", category: "Frameworks", badge: "FL", color: "#38BDF8" },
@@ -62,7 +62,7 @@ export const SKILLS_DATA = [
   // Tools (Pre-populated)
   { id: 14, name: "Git & GitHub", category: "Tools", badge: "GIT", color: "#F97316" },
   { id: 15, name: "VS Code", category: "Tools", badge: "VS", color: "#3B82F6" },
-  { id: 16, name: "Vercel", category: "Tools", badge: "VC", color: "#E5E7EB" },
+  { id: 16, name: "Vercel", category: "Tools", badge: "VC", color: "#a39595" },
   { id: 17, name: "Postman", category: "Tools", badge: "PM", color: "#FB923C" },
   { id: 18, name: "Microsoft Office", category: "Tools", badge: "MS", color: "#0EA5E9" },
   { id: 19, name: "Cisco Packet Tracer", category: "Tools", badge: "NW", color: "#10B981" },
@@ -146,8 +146,8 @@ export const PROJECTS_DATA = [
     id: 1,
     title: "Salat Tracker",
     techStack: "Flutter • Mobile App",
-    description: "A prayer tracking app with azan, qibla, and more features.",
-    image: "/images/projects/salat-tracker.jpg",
+    description: "A prayer tracking app with frequent Salat Reminder, Azan, Quran, Qibla, Dhikr and more features.",
+    image: "/images/projects/salat-tracker.jpeg",
     link: "#",
   },
   {
