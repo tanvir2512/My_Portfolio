@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import { SKILLS_CATEGORIES, SKILLS_DATA } from "@/data/portfolioData";
 import { Terminal } from "lucide-react";
-
+import Link from "next/link"; // <-- Added Next.js Link import
+import {
+  Download,
+  Mail,
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Mouse,
+  User,
+} from "lucide-react";
 /**
  * 2. SKILLS PAGE ("/skills")
  * Matches Showcase Panel 2: Category filter pills, glowing skill icon cards,
@@ -134,6 +143,15 @@ export default function SkillsPage() {
             </p>
           </div>
         </div>
+      </div>
+      <div className="mt-12 flex justify-center">
+        <Link
+          href="/experience"
+          title="Explore experience"
+          className="p-2 rounded-full border border-emerald-500/40 dark:border-neon-primary/40 text-emerald-600 dark:text-neon-primary animate-bounce hover:shadow-neon"
+        >
+          <Mouse className="w-5 h-5" />
+        </Link>
       </div>
     </section>
   );

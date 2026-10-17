@@ -3,6 +3,16 @@
 import React, { useState } from "react";
 import { PROJECTS_DATA } from "@/data/portfolioData";
 import { ArrowRight, FolderGit2 } from "lucide-react";
+import Link from "next/link"; // <-- Added Next.js Link import
+import {
+  Download,
+  Mail,
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Mouse,
+  User,
+} from "lucide-react";
 
 /**
  * 4. PROJECTS PAGE ("/projects")
@@ -93,6 +103,15 @@ export default function ProjectsPage() {
             </div>
           </div>
         ))}
+      </div>
+       <div className="mt-12 flex justify-center">
+        <Link
+          href="/services"
+          title="Explore services"
+          className="p-2 rounded-full border border-emerald-500/40 dark:border-neon-primary/40 text-emerald-600 dark:text-neon-primary animate-bounce hover:shadow-neon"
+        >
+          <Mouse className="w-5 h-5" />
+        </Link>
       </div>
     </section>
   );

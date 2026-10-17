@@ -5,7 +5,7 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 import { Mail, Globe } from "lucide-react";
 
 /**
- * Custom Inline SVG Icons for GitHub & LinkedIn
+ * Custom Inline SVG Icons for GitHub, LinkedIn & YouTube
  * (Compatible with lucide-react v1+ which removed brand logos)
  */
 function GithubIcon({ className = "w-4 h-4" }) {
@@ -43,6 +43,23 @@ function LinkedinIcon({ className = "w-4 h-4" }) {
   );
 }
 
+function YoutubeIcon({ className = "w-4 h-4" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3v6Z" fill="currentColor" />
+    </svg>
+  );
+}
+
 /**
  * Footer Component
  * Displays social media links, handwritten signature accent, and copyright notice.
@@ -74,6 +91,15 @@ export default function Footer() {
             className="p-2 rounded-lg border border-emerald-500/30 dark:border-neon-primary/30 text-slate-700 dark:text-gray-300 hover:text-neon-secondary dark:hover:text-neon-primary hover:shadow-neon transition-all"
           >
             <LinkedinIcon className="w-4 h-4" />
+          </a>
+          <a
+            href={PERSONAL_INFO.youtube || "https://www.youtube.com/@SolvewithTanvir"}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="YouTube"
+            className="p-2 rounded-lg border border-emerald-500/30 dark:border-neon-primary/30 text-slate-700 dark:text-gray-300 hover:text-neon-secondary dark:hover:text-neon-primary hover:shadow-neon transition-all"
+          >
+            <YoutubeIcon className="w-4 h-4" />
           </a>
           <a
             href={`mailto:${PERSONAL_INFO.email}`}

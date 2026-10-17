@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import { EXPERIENCE_DATA } from "@/data/portfolioData";
 import { Briefcase } from "lucide-react";
-
+import Link from "next/link"; // <-- Added Next.js Link import
+import {
+  Download,
+  Mail,
+  MapPin,
+  GraduationCap,
+  //Briefcase,
+  Mouse,
+  User,
+} from "lucide-react";
 /**
  * Custom Inline SVG Icon for YouTube
  * (Compatible with lucide-react v1+ without needing external brand icon packages)
@@ -133,6 +142,15 @@ export default function ExperiencePage() {
             </div>
           </div>
         </div>
+      </div>
+       <div className="mt-12 flex justify-center">
+        <Link
+          href="/projects"
+          title="Explore projects"
+          className="p-2 rounded-full border border-emerald-500/40 dark:border-neon-primary/40 text-emerald-600 dark:text-neon-primary animate-bounce hover:shadow-neon"
+        >
+          <Mouse className="w-5 h-5" />
+        </Link>
       </div>
     </section>
   );
